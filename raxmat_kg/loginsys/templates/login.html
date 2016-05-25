@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block login %}
+	 <div class="col-md-3 no-float">
+		<form action="/auth/login/" method="post">
+				{% csrf_token %}
+			<form>	
+				<div class="form-group">
+		        	<label for="username">Имя пользователя</label>
+		        	<input type="text" class="form-control" name="username" id="username" >
+		        </div>
+		        <div class="form-group">
+		        	<label for="password">Пароль</label>
+		        	<input type="password" class="form-control" name="password" id="password">
+		        </div>
+			    {% if login_error %}
+			    	<label class="error">{{ login_error }}</label>
+			    {% endif %}
+			    <button type="submit" class="btn btn-primary">Login</button>
+			    <br>
+			</form>
+		</form>
+		<div class="form-group">
+            <div class="col-md-12 control">
+                <div style="border-top: 0px solid#888; padding-top:10px; font-size:85%" >
+                    Не имеете учетной записи!
+                  	<a href="/auth/register/">
+                    Регистрация
+                   	</a>
+                </div>
+            </div>
+        </div>    
+	</div>
+
+{% endblock %}
+

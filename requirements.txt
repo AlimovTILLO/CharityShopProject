@@ -2,3 +2,7 @@
 #	requirements.txt in the root directory of a project.
 Django==1.9 
 
+mysqlclient
+
+pillow==2.9.0
+# for image

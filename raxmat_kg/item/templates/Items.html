@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block item %}
+{% for item in items %}
+<div class="form-group">
+	<h6>Дата публикации {{ item.item_date }}</h6>
+	<h4><a href="/items/get/{{ item.id }}/">{{ item.item_title }}</a></h4>﻿
+	<p>{{ item.item_text }}</p>
+	<hr>
+{% endfor %}
+</div>
+<div class="row">
+	<div class="col-md-3 no-float">
+		<ul class="pagination">
+			{% if items.has_previous %}
+		    	<li class="enable"><a href="/page/{{ items.previous_page_number }}/">&laquo;</a></li>
+		    {% else %}
+		    	<li class="disabled"><a href="">&laquo;</a></li>
+		    {% endif %}
+		    {% for page in items.paginator.page_range %}
+		    	{% if page == items.number %}
+					<li class="active"><a href="/page/{{ page }}/">{{ page }}</a></li>
+				{% else %}
+		    		<li><a href="/page/{{ page }}/">{{ page }}</a></li>
+		    	{% endif %}
+		    {% endfor %}
+		    {% if items.has_next %}
+		    	<li class="enable"><a href="/page/{{ items.next_page_number }}/">&raquo;</a></li>
+		    {% else %}
+		    	<li class="disabled"><a href="">&raquo;</a></li>
+		    {% endif %}
+		</ul>		
+	</div>
+</div>
+{% endblock %}
