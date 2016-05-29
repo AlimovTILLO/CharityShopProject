@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>3fbc4f88-5682-45d2-8fff-15221af06bf7</OriginalElement>
+  <nodes>
+    <node x="218.0" y="769.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.django_session</node>
+    <node x="983.8125" y="214.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.item</node>
+    <node x="471.00000000000006" y="560.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_user_groups</node>
+    <node x="387.81818181818187" y="0.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.django_content_type</node>
+    <node x="456.034090909091" y="154.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_user</node>
+    <node x="34.90909090909099" y="238.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_permission</node>
+    <node x="672.5625" y="500.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.django_admin_log</node>
+    <node x="271.25568181818187" y="262.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_group</node>
+    <node x="0.0" y="560.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_group_permissions</node>
+    <node x="945.5625" y="536.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.comments</node>
+    <node x="0.0" y="769.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.django_migrations</node>
+    <node x="222.00000000000006" y="560.0">3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_user_user_permissions</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_group_permissions" target="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_group">
+      <point x="50.5" y="-52.0" />
+      <point x="151.5" y="480.0" />
+      <point x="304.50568181818187" y="480.0" />
+      <point x="-33.25" y="40.0" />
+    </edge>
+    <edge source="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.comments" target="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.item">
+      <point x="48.25" y="-76.0" />
+      <point x="0.0" y="88.0" />
+    </edge>
+    <edge source="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_user_user_permissions" target="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_user">
+      <point x="57.25" y="-52.0" />
+      <point x="393.75000000000006" y="480.0" />
+      <point x="495.159090909091" y="480.0" />
+      <point x="-117.375" y="148.0" />
+    </edge>
+    <edge source="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.django_admin_log" target="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_user">
+      <point x="-63.25" y="-112.0" />
+      <point x="735.8125" y="480.0" />
+      <point x="651.659090909091" y="480.0" />
+      <point x="39.125" y="148.0" />
+    </edge>
+    <edge source="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_permission" target="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.django_content_type">
+      <point x="0.0" y="-64.0" />
+      <point x="121.40909090909099" y="129.0" />
+      <point x="432.81818181818187" y="129.0" />
+      <point x="-45.0" y="52.0" />
+    </edge>
+    <edge source="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_user_groups" target="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_user">
+      <point x="39.5" y="-52.0" />
+      <point x="589.5" y="480.0" />
+      <point x="573.409090909091" y="480.0" />
+      <point x="-39.125" y="148.0" />
+    </edge>
+    <edge source="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.comments" target="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_user">
+      <point x="-48.25" y="-76.0" />
+      <point x="993.8125" y="470.0" />
+      <point x="729.909090909091" y="470.0" />
+      <point x="117.375" y="148.0" />
+    </edge>
+    <edge source="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_user_groups" target="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_group">
+      <point x="-39.5" y="-52.0" />
+      <point x="510.50000000000006" y="470.0" />
+      <point x="371.00568181818187" y="470.0" />
+      <point x="33.25" y="40.0" />
+    </edge>
+    <edge source="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.django_admin_log" target="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.django_content_type">
+      <point x="63.25" y="-112.0" />
+      <point x="863.0" y="129.0" />
+      <point x="522.8181818181819" y="129.0" />
+      <point x="45.0" y="52.0" />
+    </edge>
+    <edge source="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_user_user_permissions" target="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_permission">
+      <point x="-57.25" y="-52.0" />
+      <point x="279.25000000000006" y="470.0" />
+      <point x="164.659090909091" y="470.0" />
+      <point x="43.25" y="64.0" />
+    </edge>
+    <edge source="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_group_permissions" target="3fbc4f88-5682-45d2-8fff-15221af06bf7.TABLE:RaxmatDB.auth_permission">
+      <point x="-50.5" y="-52.0" />
+      <point x="50.5" y="480.0" />
+      <point x="78.15909090909099" y="480.0" />
+      <point x="-43.25" y="64.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.608505997818975" x="598.5" y="448.49999999999994" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Key columns</Category>
+  </Categories>
+</Diagram>
+

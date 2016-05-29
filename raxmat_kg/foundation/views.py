@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from django.shortcuts import render_to_response
+from django.core.paginator import Paginator
+from django.contrib import auth
+from foundation.models import Foundation
 
-# Create your views here.
+
+def foundations(request):
+    return render_to_response('foundations.html', {'username': auth.get_user(request).username})

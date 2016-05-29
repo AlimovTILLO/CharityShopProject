@@ -1,8 +1,13 @@
 # This file is here because many Platforms as a Service look for
-#	requirements.txt in the root directory of a project.
-Django==1.9 
-
-mysqlclient
+# requirements.txt in the root directory of a project.
+Django==1.9
 
 pillow==2.9.0
 # for image
+
+setuptools
+
+mysqlclient
+
+pip
+

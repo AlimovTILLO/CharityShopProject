@@ -7,14 +7,13 @@ from forms import CommentForm
 from item.models import Item, Comments
 
 
-
 def index(request):
-    return render(request, 'main.html')
+    return render(request, 'main.html', {'username': auth.get_user(request).username})
 
 
 def items(request, page_number=1):
     all_items = Item.objects.all()
-    current_page = Paginator(all_items, 4)
+    current_page = Paginator(all_items, 6)
     return render_to_response('Items.html', {'items': current_page.page(page_number), 'username': auth.get_user(request).username})
 
 

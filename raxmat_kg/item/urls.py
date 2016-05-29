@@ -1,11 +1,16 @@
 # -*-coding: utf-8 -*-
-from django.conf.urls import url
-from . import views
 
-urlpatterns = (
-    url(r'^$', views.index),
-    url(r'^items/all/$', views.items, name='items'),
-    url(r'^items/get/(?P<item_id>\d+)/$', views.item, name='item'),
-    url(r'^comments_item_id/(\d+)/$', views.item, name='item'),
-    url(r'^page/(\d+)/$', views.items, name='items'),
-)
+from django.conf.urls import url
+from django.conf import settings
+from django.contrib.staticfiles import views
+
+
+urlpatterns = [
+    url(r'^$', "item.views.index"),
+    url(r'^$', "item.views.items"),
+    url(r'^items/all/$', "item.views.items"),
+    url(r'^items/get/(?P<item_id>\d+)/$', "item.views.item"),
+    url(r'^comments_item_id/(\d+)/$', "item.views.item"),
+    url(r'^page/(\d+)/$', "item.views.items"),
+]
+

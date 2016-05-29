@@ -2,35 +2,79 @@
 {% load staticfiles %}
 
 {% block item %}
-{% for item in items %}
-<div class="form-group">
-	<h6>Дата публикации {{ item.item_date }}</h6>
-	<h4><a href="/items/get/{{ item.id }}/">{{ item.item_title }}</a></h4>﻿
-	<p>{{ item.item_text }}</p>
-	<hr>
-{% endfor %}
-</div>
-<div class="row">
-	<div class="col-md-3 no-float">
-		<ul class="pagination">
-			{% if items.has_previous %}
-		    	<li class="enable"><a href="/page/{{ items.previous_page_number }}/">&laquo;</a></li>
-		    {% else %}
-		    	<li class="disabled"><a href="">&laquo;</a></li>
-		    {% endif %}
-		    {% for page in items.paginator.page_range %}
-		    	{% if page == items.number %}
-					<li class="active"><a href="/page/{{ page }}/">{{ page }}</a></li>
-				{% else %}
-		    		<li><a href="/page/{{ page }}/">{{ page }}</a></li>
-		    	{% endif %}
-		    {% endfor %}
-		    {% if items.has_next %}
-		    	<li class="enable"><a href="/page/{{ items.next_page_number }}/">&raquo;</a></li>
-		    {% else %}
-		    	<li class="disabled"><a href="">&raquo;</a></li>
-		    {% endif %}
-		</ul>		
-	</div>
-</div>
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Категории</p>
+            <div class="list-group">
+
+
+                {% regroup category by item_category_main_id as main_category_name %}
+
+                        {% for c in main_category_name %}
+                          <h1>{{c.grouper.main_category_name}}</h1>
+                        {% endfor %}
+
+
+                {% regroup items by item_category_id as item_category_name %}
+
+                    {% for c in item_category_name %}
+                      <h1>{{c.grouper.item_category_name}}</h1>
+                    {% endfor %}
+
+
+            </div>
+        </div>
+        <div class="col-md-9">
+            {% for item in items %}
+                <div class="col-sm-3 col-lg-3 col-md-3">
+                    <div class="thumbnail">
+                        <a href="/items/get/{{ item.id }}/"><img
+                                src="{{ MEDIA_URL }}/static/media/{{ item.item_image }}" alt="{{ item.item_title }}"
+                                width="140" class="img-thumbnail"></a>
+                        <div class="caption">
+                            <h4>{{ item.item_price }}</h4>
+                            <h4><a href="/items/get/{{ item.id }}/">{{ item.item_title }}</a></h4>
+                            <p>{{ item.item_description }}</p>
+                        </div>
+                        <div class="ratings">
+                            <p class="pull-right">31 reviews</p>
+                            <p>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+            <hr>
+            <div class="col-md-3 no-float">
+                <ul class="pagination">
+                    {% if items.has_previous %}
+                        <li class="enable"><a href="/page/{{ items.previous_page_number }}/">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><a href="">&laquo;</a></li>
+                    {% endif %}
+                    {% for page in items.paginator.page_range %}
+                        {% if page == items.number %}
+                            <li class="active"><a href="/page/{{ page }}/">{{ page }}</a></li>
+                        {% else %}
+                            <li><a href="/page/{{ page }}/">{{ page }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if items.has_next %}
+                        <li class="enable"><a href="/page/{{ items.next_page_number }}/">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><a href="">&raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
