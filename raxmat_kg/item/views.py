@@ -1,20 +1,20 @@
 from django.contrib import auth
 from django.template.context_processors import csrf
 from django.core.paginator import Paginator
-from django.shortcuts import render
 from django.shortcuts import render_to_response, redirect
 from forms import CommentForm
 from item.models import Item, Comments
 
 
 def index(request):
-    return render(request, 'main.html', {'username': auth.get_user(request).username})
+    return items(request)
 
 
 def items(request, page_number=1):
     all_items = Item.objects.all()
-    current_page = Paginator(all_items, 6)
-    return render_to_response('Items.html', {'items': current_page.page(page_number), 'username': auth.get_user(request).username})
+    current_page = Paginator(all_items, 8)
+    return render_to_response('Items.html',
+                              {'items': current_page.page(page_number), 'username': auth.get_user(request).username})
 
 
 def item(request, item_id):

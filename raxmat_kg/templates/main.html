@@ -39,19 +39,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Charrity Shop</a>
+            <a class="navbar-brand" href="/">Raxmat</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="/items/all">Home</a>
-                </li>
-                <li>
                     <a href="/admin">Admin</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="/show">Cart</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -71,7 +68,7 @@
 <div class="container">
 
     <div class="row">
-
+        {% block body %}{% endblock %}
         {% block item %}{% endblock %}
         {% block found %}{% endblock %}
         {% block login %}{% endblock %}

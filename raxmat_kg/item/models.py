@@ -24,10 +24,10 @@ class Item(models.Model):
     class Meta:
         db_table = 'item'
 
-    item_title = models.CharField(max_length=200)
+    item_title = models.CharField(max_length=200, verbose_name="Названия товара")
     item_image = models.FileField(null=True, blank=True)
     item_description = models.TextField()
-    item_price = models.IntegerField(default=0)
+    item_price = models.DecimalField(max_digits=18, decimal_places=2)
     item_foundation_id = models.ForeignKey(Foundation, on_delete=models.SET_NULL, blank=True, null=True)
     item_charity = models.IntegerField(default=0)
     item_date = models.DateTimeField()

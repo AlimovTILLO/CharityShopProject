@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'purchase',
     'transaction',
     'loginsys',
+    'cart',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -65,6 +66,7 @@ TEMPLATES = [
             '/home/alimovtillo/raxmat_kg/raxmat_kg/purchase/templates',
             '/home/alimovtillo/raxmat_kg/raxmat_kg/transaction/templates',
             '/home/alimovtillo/raxmat_kg/raxmat_kg/loginsys/templates',
+            '/home/alimovtillo/raxmat_kg/raxmat_kg/cart/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

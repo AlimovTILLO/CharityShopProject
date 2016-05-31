@@ -1,8 +1,7 @@
 # -*-coding: utf-8 -*-
 
 from django.conf.urls import url
-from django.conf import settings
-from django.contrib.staticfiles import views
+from item import views
 
 
 urlpatterns = [
