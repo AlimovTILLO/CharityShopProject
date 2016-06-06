@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'transaction',
     'loginsys',
     'cart',
+    'report',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -88,7 +90,7 @@ WSGI_APPLICATION = 'raxmat_kg.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'RaxmatBASE',
+        'NAME': 'Raxmat_DB',
         'USER': 'root',
         'PASSWORD': '12345',
         'HOST': 'localhost',
@@ -114,6 +116,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+GRAPPELLI_ADMIN_TITLE = 'Charity Shop'
+
+AUTOCOMPLETE_LIMIT = 5
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/

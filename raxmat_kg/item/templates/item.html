@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">{{ item.item_title }}
-                    <small>Из категории:{{ item.item_category_id.item_category_name }}</small>
+                    <small>Из категории:{{ item.item_category.item_category_name }}</small>
                 </h1>
             </div>
         </div>
@@ -25,15 +25,12 @@
 
             <div class="col-md-4">
                 <h3>{{ item.item_price }} Сом</h3>
-                <h4>{{ item.item_charity }} % процент в состав Фонду {{ item.item_foundation_id.foundation_name }}</h4>
+                <h4>{{ item.item_charity }} % процент в состав Фонду {{ item.item_foundation.foundation_name }}</h4>
                 <p>Нравится:{{ item.item_likes }} пользователям</p>
                 <p>{{ item.item_description }}</p>
                 <h4>Дата создания: {{ item.item_date }}</h4>
                 <ul>
                     <li>Lorem Ipsum</li>
-                    <li>Dolor Sit Amet</li>
-                    <li>Consectetur</li>
-                    <li>Adipiscing Elit</li>
                 </ul>
             </div>
 
@@ -88,30 +85,6 @@
 	<hr><br>
 {% endfor %}
 
-
-<div class="row">
-	<div class="col-md-3 no-float">
-		<ul class="pagination">
-			{% if comments.has_previous %}
-		    	<li class="enable"><a href="{{ comments_item_id.previous_page_number }}/">&laquo;</a></li>
-		    {% else %}
-		    	<li class="disabled"><a href="">&laquo;</a></li>
-		    {% endif %}
-		    {% for page in comments.paginator.page_range %}
-		    	{% if page == comments.number %}
-					<li class="active"><a href="{{ comments_item_id }}/">{{ page }}</a></li>
-				{% else %}
-		    		<li><a href="{{ comments_item_id }}/">{{ page }}</a></li>
-		    	{% endif %}
-		    {% endfor %}
-		    {% if comments.has_next %}
-		    	<li class="enable"><a href="{{ comments_item_id.next_page_number }}/">&raquo;</a></li>
-		    {% else %}
-		    	<li class="disabled"><a href="">&raquo;</a></li>
-		    {% endif %}
-		</ul>		
-	</div>
-</div>
 
 	{% if username %}
 

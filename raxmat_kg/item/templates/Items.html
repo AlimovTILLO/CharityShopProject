@@ -7,18 +7,10 @@
             <p class="lead">Категории</p>
             <div class="list-group">
 
+                {% regroup items by item_category as item_category_name %}
 
-                {% regroup category by item_category_main_id as main_category_name %}
-
-                        {% for c in main_category_name %}
-                          <h1>{{c.grouper.main_category_name}}</h1>
-                        {% endfor %}
-
-
-                {% regroup items by item_category_id as item_category_name %}
-
-                    {% for c in item_category_name %}
-                      <h1>{{c.grouper.item_category_name}}</h1>
+                    {% for i in item_category_name %}
+                      <h3>{{i.grouper.item_category_name}}</h3>
                     {% endfor %}
 
 
@@ -52,29 +44,33 @@
             {% endfor %}
 
             <hr>
-            <div class="col-md-3 no-float">
-                <ul class="pagination">
-                    {% if items.has_previous %}
-                        <li class="enable"><a href="/page/{{ items.previous_page_number }}/">&laquo;</a></li>
-                    {% else %}
-                        <li class="disabled"><a href="">&laquo;</a></li>
-                    {% endif %}
-                    {% for page in items.paginator.page_range %}
-                        {% if page == items.number %}
-                            <li class="active"><a href="/page/{{ page }}/">{{ page }}</a></li>
-                        {% else %}
-                            <li><a href="/page/{{ page }}/">{{ page }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                    {% if items.has_next %}
-                        <li class="enable"><a href="/page/{{ items.next_page_number }}/">&raquo;</a></li>
-                    {% else %}
-                        <li class="disabled"><a href="">&raquo;</a></li>
-                    {% endif %}
-                </ul>
-            </div>
         </div>
     </div>
+     <div class="row">
+         <div class="col-md-3"></div>
+         <div class="col-md-9 no-float">
+             <ul class="pagination">
+                 {% if items.has_previous %}
+                     <li class="enable"><a href="/page/{{ items.previous_page_number }}/">&laquo;</a></li>
+                 {% else %}
+                     <li class="disabled"><a href="">&laquo;</a></li>
+                 {% endif %}
+                 {% for page in items.paginator.page_range %}
+                     {% if page == items.number %}
+                         <li class="active"><a href="/page/{{ page }}/">{{ page }}</a></li>
+                     {% else %}
+                         <li><a href="/page/{{ page }}/">{{ page }}</a></li>
+                     {% endif %}
+                 {% endfor %}
+                 {% if items.has_next %}
+                     <li class="enable"><a href="/page/{{ items.next_page_number }}/">&raquo;</a></li>
+                 {% else %}
+                     <li class="disabled"><a href="">&raquo;</a></li>
+                 {% endif %}
+             </ul>
+         </div>
+     </div>
 
 
 {% endblock %}
+

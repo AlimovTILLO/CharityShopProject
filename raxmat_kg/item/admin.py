@@ -1,14 +1,17 @@
 from django.contrib import admin
-from item.models import MainCategory, ItemCategory, Item, Comments
+from item.models import MainCategory, ItemCategory, Charity, Item, Comments
 
 
-# Register your models here.
 class MainCategoryAdmin(admin.ModelAdmin):
     fields = ['main_category_name']
 
 
 class ItemCategoryAdmin(admin.ModelAdmin):
-    fields = ['item_category_main_id', 'item_category_name']
+    fields = ['item_category_main', 'item_category_name']
+
+
+class CharityAdmin(admin.ModelAdmin):
+    fields = ['charity_percent']
 
 
 class ItemInline(admin.StackedInline):
@@ -17,8 +20,8 @@ class ItemInline(admin.StackedInline):
 
 
 class ItemAdmin(admin.ModelAdmin):
-    fields = ['item_title', 'item_description', 'item_date', 'item_image', 'item_price', 'item_charity',
-              'item_category_id']
+    fields = ['item_category', 'item_title', 'item_description', 'item_date', 'item_image', 'item_price',
+              'item_charity', 'item_foundation']
 
     inlines = [ItemInline]
     list_filter = ['item_date']
@@ -26,4 +29,5 @@ class ItemAdmin(admin.ModelAdmin):
 
 admin.site.register(MainCategory, MainCategoryAdmin)
 admin.site.register(ItemCategory, ItemCategoryAdmin)
+admin.site.register(Charity, CharityAdmin)
 admin.site.register(Item, ItemAdmin)

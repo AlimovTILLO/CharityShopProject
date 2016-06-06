@@ -38,3 +38,4 @@ def addcomment(request, item_id):
             request.session.set_expiry(60)
             request.session['pause'] = True
     return redirect('/items/get/%s/' % item_id)
+
