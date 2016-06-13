@@ -24,14 +24,41 @@
             </div>
 
             <div class="col-md-4">
+                <input type="number" name="quantity" min="1" max="100">
+                <a id="add_to_cart">Add to Cart</a>
+                <script>
+                    var url = '{% url 'cart:add' item.id 0 %}'.replace('0', '{quantity}');
+                    $(document).ready(function () {
+                        $('#add_to_cart').click(function () {
+                            var quantity = $('input[name="quantity"]').val();
+                            $.ajax({
+                                url: url.replace('{quantity}', quantity),
+                                success: function (response) {
+                                    alert('Item was added into cart');
+                                }
+                            })
+                        })
+                    });
+                </script>
+                <br>
+                <!--<select class="form-control">
+                    {%for vari_item in item.variation_set.all %}
+                    <option value="{{ vari_item.id }}">{{ vari_item }}</option>
+                    {% endfor %}
+                </select>-->
                 <h3>{{ item.item_price }} Сом</h3>
                 <h4>{{ item.item_charity }} % процент в состав Фонду {{ item.item_foundation.foundation_name }}</h4>
                 <p>Нравится:{{ item.item_likes }} пользователям</p>
                 <p>{{ item.item_description }}</p>
                 <h4>Дата создания: {{ item.item_date }}</h4>
-                <ul>
-                    <li>Lorem Ipsum</li>
-                </ul>
+                <hr/>
+                <p>
+                Share<br/>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+                Share on FB</a>
+                </p>
+
+                <hr/>
             </div>
 
         </div>

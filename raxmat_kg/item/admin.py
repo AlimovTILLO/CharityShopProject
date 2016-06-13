@@ -1,5 +1,5 @@
 from django.contrib import admin
-from item.models import MainCategory, ItemCategory, Charity, Item, Comments
+from .models import MainCategory, ItemCategory, Charity, Item, Comments
 
 
 class MainCategoryAdmin(admin.ModelAdmin):
@@ -20,8 +20,8 @@ class ItemInline(admin.StackedInline):
 
 
 class ItemAdmin(admin.ModelAdmin):
-    fields = ['item_category', 'item_title', 'item_description', 'item_date', 'item_image', 'item_price',
-              'item_charity', 'item_foundation']
+    fields = ['item_category', 'item_title', 'item_description', 'item_image', 'item_price',
+              'item_charity', 'item_foundation', 'item_active']
 
     inlines = [ItemInline]
     list_filter = ['item_date']

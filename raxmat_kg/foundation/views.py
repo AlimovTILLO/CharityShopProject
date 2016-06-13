@@ -5,5 +5,5 @@ from django.contrib import auth
 from foundation.models import Foundation
 
 
-def foundations(request):
+def funds(request):
     return render_to_response('foundations.html', {'username': auth.get_user(request).username})

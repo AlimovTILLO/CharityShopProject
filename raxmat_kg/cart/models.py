@@ -15,15 +15,13 @@ class Cart(models.Model):
     def __unicode__(self):
         return unicode(self.creation_date)
 
-
 class ItemManager(models.Manager):
     def get(self, *args, **kwargs):
         if 'product' in kwargs:
             kwargs['content_type'] = ContentType.objects.get_for_model(type(kwargs['product']))
             kwargs['object_id'] = kwargs['product'].pk
-            del (kwargs['product'])
+            del(kwargs['product'])
         return super(ItemManager, self).get(*args, **kwargs)
-
 
 class Item(models.Model):
     cart = models.ForeignKey(Cart, verbose_name=_('cart'))
@@ -45,7 +43,6 @@ class Item(models.Model):
 
     def total_price(self):
         return self.quantity * self.unit_price
-
     total_price = property(total_price)
 
     # product
@@ -57,3 +54,4 @@ class Item(models.Model):
         self.object_id = product.pk
 
     product = property(get_product, set_product)
+

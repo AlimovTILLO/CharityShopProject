@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'grappelli',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -90,7 +91,7 @@ WSGI_APPLICATION = 'raxmat_kg.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Raxmat_DB',
+        'NAME': 'raxmatkg',
         'USER': 'root',
         'PASSWORD': '12345',
         'HOST': 'localhost',

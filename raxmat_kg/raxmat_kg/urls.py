@@ -23,10 +23,9 @@ urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include("item.urls", namespace='item')),
-    url(r'', include("cart.urls", namespace='cart')),
-    url(r'', include("foundation.urls", namespace='foundations')),
+    url(r'', include("foundation.urls", namespace='funds')),
+    url(r'^cart/', include("cart.urls", namespace='cart')),
     url(r'^auth/', include("loginsys.urls", namespace='loginsys')),
-
 ]
 
 if settings.DEBUG:

@@ -3,16 +3,32 @@
 {% block body %}
     <table>
         <tr>
-            <th>Product-|-</th>
-            <th> Quantity-|-</th>
-            <th> Total Price</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Delete</th>
         </tr>
-        {% for i in cart %}
+        {% for item in cart %}
         <tr>
-            <td>{{ i.product.name }}</td>
-            <td>{{ i.quantity }}</td>
-            <td>{{ i.total_price }}</td>
+            <td>{{ item.product.item_title }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.total_price }}</td>
+            <td><a href="{% url 'cart:remove' item.product.id %}" data-action="remove">Delete item</a></td>
         </tr>
         {% endfor %}
     </table>
+    <a href="{% url 'cart:remove_all' %}" data-action="remove">Delete all items</a>
+    <script>
+        $(document).ready(function () {
+            $('a[data-action="remove"]').click(function () {
+                $.ajax({
+                    url: $(this).attr('href'),
+                    success: function (response) {
+                        window.location.reload();
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
 {% endblock %}
