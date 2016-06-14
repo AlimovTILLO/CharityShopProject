@@ -24,7 +24,7 @@
             </div>
 
             <div class="col-md-4">
-                <input type="number" name="quantity" min="1" max="100">
+                <input type="number" value="1" name="quantity" min="1" max="100">
                 <a id="add_to_cart">Add to Cart</a>
                 <script>
                     var url = '{% url 'cart:add' item.id 0 %}'.replace('0', '{quantity}');
@@ -41,11 +41,6 @@
                     });
                 </script>
                 <br>
-                <!--<select class="form-control">
-                    {%for vari_item in item.variation_set.all %}
-                    <option value="{{ vari_item.id }}">{{ vari_item }}</option>
-                    {% endfor %}
-                </select>-->
                 <h3>{{ item.item_price }} Сом</h3>
                 <h4>{{ item.item_charity }} % процент в состав Фонду {{ item.item_foundation.foundation_name }}</h4>
                 <p>Нравится:{{ item.item_likes }} пользователям</p>
@@ -54,7 +49,7 @@
                 <hr/>
                 <p>
                 Share<br/>
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.META.HTTP_HOST }}">
                 Share on FB</a>
                 </p>
 

@@ -4,7 +4,7 @@ from purchase.models import Purchase
 
 
 class PurchaseAdmin(admin.ModelAdmin):
-    fields = ['purchase_user', 'purchase_item', 'purchase_sales_date', 'purchase_pin']
+    fields = ['user', 'item', 'sales_date', 'pin']
 
 
 admin.site.register(Purchase, PurchaseAdmin)

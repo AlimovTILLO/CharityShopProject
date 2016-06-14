@@ -1,22 +1,29 @@
 {% extends 'main.html' %}
 
 {% block body %}
-    <table>
-        <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Total Price</th>
-            <th>Delete</th>
-        </tr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total Price</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
         {% for item in cart %}
+        <tbody>
         <tr>
             <td>{{ item.product.item_title }}</td>
             <td>{{ item.quantity }}</td>
+            <td>{{ item.unit_price }}</td>
             <td>{{ item.total_price }}</td>
             <td><a href="{% url 'cart:remove' item.product.id %}" data-action="remove">Delete item</a></td>
         </tr>
+        </tbody>
         {% endfor %}
     </table>
+    <p>Summary: {{ cart.summary }}</p>
     <a href="{% url 'cart:remove_all' %}" data-action="remove">Delete all items</a>
     <script>
         $(document).ready(function () {

@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% block item %}
+<div>
+    <figure>
+        <img src='images/cake.jpg'/> <br/> <br/>
+        <figcaption class='img-label'>
+            A Virtual chocolate cake to fill your virtual tummy
+        </figcaption>
+    </figure>
+    <button id='runDemoButton' value='buy' class='buy-button'
+            onclick='DemoButton("{{ jwt }}","{{ key }}");'><b>Purchase</b></button>
+</div>
+{% endblock %}

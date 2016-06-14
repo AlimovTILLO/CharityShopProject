@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.utils import timezone
 import uuid
 from item.models import Item
@@ -17,10 +16,10 @@ class Purchase(models.Model):
         verbose_name = "Покупка"
         verbose_name_plural = "Покупки"
 
-    purchase_user = models.ForeignKey(User, on_delete=models.CASCADE)
-    purchase_item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    purchase_sales_date = models.DateTimeField(default=timezone.now)
-    purchase_pin = models.TextField(default=uuid.uuid4().hex[:5])
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    sales_date = models.DateTimeField(default=timezone.now)
+    pin = models.TextField(default=uuid.uuid4().hex[:5])
 
 
 class Account(models.Model):
@@ -32,8 +31,8 @@ class Account(models.Model):
         verbose_name = "account"
         verbose_name_plural = "accounts"
 
-    account_user = models.ForeignKey(User, on_delete=models.CASCADE)
-    account_data = models.CharField(max_length=50)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    data = models.CharField(max_length=50)
 
 
 class Transaction(models.Model):
@@ -45,7 +44,7 @@ class Transaction(models.Model):
         verbose_name = "transaction"
         verbose_name_plural = "transactions"
 
-    transaction_from_account = models.ForeignKey(Account, on_delete=models.CASCADE)
-#    transaction_to_account = models.ForeignKey(Account, on_delete=models.CASCADE)
-    transaction_date = models.DateTimeField(default=timezone.now)
-    transaction_status = models.TextField(default=None)
+    from_account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    #    transaction_to_account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    sales_date = models.DateTimeField(default=timezone.now)
+    status = models.TextField(default=None)

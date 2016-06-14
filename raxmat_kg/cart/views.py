@@ -1,4 +1,5 @@
-# Create your views here.
+from django.contrib import auth
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 
 from .cart import Cart
