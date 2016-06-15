@@ -11,3 +11,6 @@ mysqlclient
 
 pip
 
+django-grappelli==2.8.1
+
+wheel
