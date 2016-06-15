@@ -2,7 +2,8 @@
 {% block item %}
 <div>
     <figure>
-        <img src='images/cake.jpg'/> <br/> <br/>
+        <img src="{{ MEDIA_URL }}/static/media/{{ item.item_image }}" alt="{{ item.item_title }}" width="500"  class="img-responsive">
+         <br/>
         <figcaption class='img-label'>
             A Virtual chocolate cake to fill your virtual tummy
         </figcaption>

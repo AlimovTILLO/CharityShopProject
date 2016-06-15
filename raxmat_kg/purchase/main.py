@@ -1,7 +1,7 @@
 # coding=utf-8
 import time
 
-from django.shortcuts import render
+from django.shortcuts import render_to_response
 
 from cart import cart
 from cart.models import Cart, Item
@@ -15,16 +15,17 @@ app = Cart(__name__)
 
 def index(request):
     product_info = [
-        {'name': Item.product,
-         'price': Item.total_price
+        {'name': 'blablabla',  # ==>
+         'price': 25  # ==>
          }]
 
     request_info = {
         'currencyCode': 'KGS',
-        'sellerData': cart,
-        'totalSum': cart.Cart.summary,
+        'sellerData': 1,  # ==>
+        'totalSum': 25,  # ==>
         'description': u"Информация о заказе",
-        'products': product_info
+        'products': product_info,
+        'test': True  # ==>
     }
     curr_time = int(time.time())
     exp_time = curr_time + 3600
@@ -38,4 +39,4 @@ def index(request):
         'request': request_info
     }
     token = jwt.encode(jwt_info, SELLER_SECRET)
-    return render('mobilnik.html', jwt=token, key=SELLER_ID)
+    return render_to_response('mobilnik.html', {'jwt': token, 'key': SELLER_ID})
