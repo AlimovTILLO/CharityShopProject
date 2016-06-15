@@ -1,9 +1,8 @@
 from django.contrib import auth
-from django.contrib.auth.models import User
 from django.http import JsonResponse
 
 from .cart import Cart
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from item.models import Item
 
 
@@ -27,4 +26,9 @@ def remove_all(request):
 
 
 def show(request):
-    return render_to_response('cart.html', dict(cart=Cart(request)))
+    context = {
+        'cart': Cart(request),
+        'username': auth.get_user(request).username
+    }
+    print(dict(cart=Cart(request)))
+    return render(request, 'cart.html', context)

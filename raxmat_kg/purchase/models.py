@@ -32,7 +32,7 @@ class Account(models.Model):
         verbose_name_plural = "accounts"
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    data = models.CharField(max_length=50)
+    data = models.DateTimeField()
 
 
 class Transaction(models.Model):

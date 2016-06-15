@@ -1,0 +1,6 @@
+.category ul {
+    -webkit-padding-start: 0;
+}
+.category ul li{
+    list-style-type: none;
+}

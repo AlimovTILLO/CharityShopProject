@@ -24,7 +24,7 @@
             </div>
 
             <div class="col-md-4">
-                <input type="number" value="1" name="quantity" min="1" max="100">
+                <input type="number" value="1" name="quantity" min="1" max="i">
                 <a id="add_to_cart">Add to Cart</a>
                 <script>
                     var url = '{% url 'cart:add' item.id 0 %}'.replace('0', '{quantity}');

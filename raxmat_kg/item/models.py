@@ -81,7 +81,7 @@ class Item(models.Model):
     item_charity = models.ForeignKey(Charity, on_delete=models.CASCADE)
     item_category = models.ForeignKey(ItemCategory, on_delete=models.CASCADE)
     item_active = models.BooleanField(default=True)
-    #item_quantity = models.IntegerField(default=1)
+    item_quantity = models.IntegerField(default=1)
 
 
 class Comments(models.Model):

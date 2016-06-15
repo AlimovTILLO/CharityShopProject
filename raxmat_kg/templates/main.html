@@ -19,7 +19,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/static/css/shop-homepage.css">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,6 +46,8 @@
             });
             return false;
         }
+
+
     </script>
 </head>
 
@@ -97,6 +99,7 @@
 <div class="container">
 
     <div class="row">
+
         {% block body %}{% endblock %}
         {% block item %}{% endblock %}
         {% block found %}{% endblock %}
@@ -125,10 +128,12 @@
 <!-- /.container -->
 
 <!-- jQuery -->
-<script> src="{{ STATIC_URL }}/static/js/jquery.js"</script>
+<script> src = "{{ STATIC_URL }}/static/js/jquery.js"</script>
 
 <!-- Bootstrap Core JavaScript -->
-<script> src="{{ STATIC_URL }}/static/js/bootstrap.min.js"</script>
+<script> src = "{{ STATIC_URL }}/static/js/bootstrap.min.js"</script>
+
+
 </body>
 
 </html>

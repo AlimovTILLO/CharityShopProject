@@ -1,8 +1,12 @@
 from django.contrib import auth
 from django.contrib.auth.models import User
+from django.http.response import JsonResponse, Http404
 from django.template.context_processors import csrf
 from django.core.paginator import Paginator
 from django.shortcuts import render_to_response, redirect
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import ListView
+
 from forms import CommentForm
 from models import Item, Comments, ItemCategory
 
@@ -49,6 +53,24 @@ def itemcategory(request):
                               {'all_categories': all_categories, 'username': auth.get_user(request).username})
 
 
+class CategoryProduct(ListView):
+    template_name = "category_product.html"
+    model = Item
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryProduct, self).get_context_data(**kwargs)
+        all_categories = ItemCategory.objects.all()
+        context['all_categories'] = all_categories
+        context['username'] = auth.get_user(self.request).username
+        # context['username'] = auth.get_user(self.request).username
+        context['items'] = Item.objects.filter(item_category=self.kwargs['pk'])
+        return context
 
 
-
+@csrf_exempt
+def GetAjaxCategoryProduct(request):
+    if request.is_ajax():
+        category = ItemCategory.objects.values_list('id', 'item_category_name')
+        return JsonResponse({"category": dict(category)})
+    else:
+        raise Http404

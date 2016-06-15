@@ -18,10 +18,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 
+from item.views import GetAjaxCategoryProduct
 
 urlpatterns = [
-    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^grappelli/', include('grappelli.urls')),
+    url(r'^ajax_get_category/$', GetAjaxCategoryProduct, name="ajaxgetcategory"),
     url(r'', include("item.urls", namespace='item')),
     url(r'', include("foundation.urls", namespace='funds')),
     url(r'^cart/', include("cart.urls", namespace='cart')),

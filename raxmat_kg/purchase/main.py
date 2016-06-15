@@ -1,8 +1,10 @@
 # coding=utf-8
 import time
 
+from django.shortcuts import render
+
 from cart import cart
-from cart.models import render_template, Cart
+from cart.models import Cart, Item
 
 import jwt
 from sellerinfo import SELLER_ID
@@ -11,17 +13,16 @@ from sellerinfo import SELLER_SECRET
 app = Cart(__name__)
 
 
-@app.route('/')
-def index():
+def index(request):
     product_info = [
-        {'name': "A Virtual chocolate cake to fill your virtual tummy ",
-         'price': "25.00"
+        {'name': Item.product,
+         'price': Item.total_price
          }]
 
     request_info = {
         'currencyCode': 'KGS',
-        'sellerData': u"Номер транзакции",
-        'totalSum': cart.summary,
+        'sellerData': cart,
+        'totalSum': cart.Cart.summary,
         'description': u"Информация о заказе",
         'products': product_info
     }
@@ -37,4 +38,4 @@ def index():
         'request': request_info
     }
     token = jwt.encode(jwt_info, SELLER_SECRET)
-    return render_template('mobilnik.html', jwt=token, key=SELLER_ID)
+    return render('mobilnik.html', jwt=token, key=SELLER_ID)
