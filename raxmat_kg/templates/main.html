@@ -51,7 +51,7 @@
     </script>
 </head>
 
-<body class="font-awesome">
+<body>
 
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -75,13 +75,12 @@
                     <a href="{% url 'cart:show' %}">Корзина</a>
                 </li>
                 <li>
-                    <a href="/funds">Фонды</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
                 <li>
-                    <a href="/admin">Admin</a>
+                    <a href="/admin">Личный кабинет</a>
                 </li>
                 {% if username %}
                     <li><a href="/auth/logout">Выйти({{ username }})</a></li>
@@ -117,9 +116,16 @@
 
     <!-- Footer -->
     <footer>
-        <div class="row">
-            <div class="col-lg-12">
+        <div class=".fixed-header, .fixed-footer">
+            <div class="col-lg-3">
                 <p>Copyright &copy; Alimov TILLO KSTU Diplom</p>
+            </div>
+            <div class="col-lg-9">
+                <ul class="list-inline">
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Как это работает?</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
             </div>
         </div>
     </footer>

@@ -24,8 +24,8 @@
             </div>
 
             <div class="col-md-4">
-                <input type="number" value="1" name="quantity" min="1" max="i">
-                <a id="add_to_cart">Add to Cart</a>
+                <input type="number" value="1" name="quantity" min="1" max="{{ item.item_quantity }}">
+                <a id="add_to_cart"><button type="button" class="btn btn-success">Добавить в корзину</button></a>
                 <script>
                     var url = '{% url 'cart:add' item.id 0 %}'.replace('0', '{quantity}');
                     $(document).ready(function () {
@@ -42,6 +42,7 @@
                 </script>
                 <br>
                 <h3>{{ item.item_price }} Сом</h3>
+                <h4>Количество :{{ item.item_quantity }}</h4>
                 <h4>{{ item.item_charity }} % процент в состав Фонду {{ item.item_foundation.foundation_name }}</h4>
                 <p>Нравится:{{ item.item_likes }} пользователям</p>
                 <p>{{ item.item_description }}</p>
@@ -62,33 +63,7 @@
         <!-- Related Projects Row -->
         <div class="row">
 
-            <div class="col-lg-12">
-                <h3 class="page-header">Related Projects</h3>
-            </div>
 
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
         </div>
         <!-- /.row -->
 

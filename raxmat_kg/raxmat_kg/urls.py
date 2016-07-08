@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 
 from item.views import GetAjaxCategoryProduct
+from purchase.views import UserAddressCreateView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -28,6 +29,7 @@ urlpatterns = [
     url(r'', include("foundation.urls", namespace='funds')),
     url(r'^cart/', include("cart.urls", namespace='cart')),
     url(r'^auth/', include("loginsys.urls", namespace='loginsys')),
+    url(r'^cart/address/add/$', UserAddressCreateView.as_view(), name='user_address_create'),
 ]
 
 if settings.DEBUG:

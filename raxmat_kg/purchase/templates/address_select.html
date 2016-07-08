@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+
+{% block item %}
+
+    <div class="row">
+        <div class="col-lg-10">
+            <div class='col-sm-4 col-sm-offset-4 text-center'>
+                <p class='lead'>
+                    Выберите свои адреса для этого заказа
+                </p>
+{#                <form method="POST" action=''>{% csrf_token %}#}
+{##}
+{##}
+{#                    {{ form|crispy }}#}
+{##}
+{##}
+{#                    <input class='btn btn-default' type='submit' value='Select'/>#}
+{#                    <a class='btn btn-link' href='{% url "user_address_create" %}'>Add new</a>#}
+{##}
+{#                </form>#}
+
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <a href="/cart/purchase/step_two/">
+                <button type="button" class="btn btn-success">Адрес доставки</button>
+            </a>
+
+        </div>
+    </div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Оформить заказ"/>
+    </form>
+
+{% endblock %}

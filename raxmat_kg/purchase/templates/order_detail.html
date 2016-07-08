@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% block item %}
+
+
+    <div class="row">
+        <div class="col-lg-10">
+
+            {% include "order_summary_short.html" with order=order %}
+
+            <p></p>
+            <p>— опционально «поставить точку или нарисовать маршрут от метро на яндекс карте».</p>
+            <p>Адрес доставки</p>
+            <p>Выбор способа доставки</p>
+        </div>
+        <div class="col-lg-2">
+            <a href="/cart/purchase/step_three/">
+                <button type="button" class="btn btn-success">Выбор способа доставки</button>
+            </a>
+
+        </div>
+    </div>
+
+{% endblock %}

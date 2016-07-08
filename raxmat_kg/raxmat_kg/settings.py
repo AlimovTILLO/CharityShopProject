@@ -26,11 +26,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
+
+BRAINTREE_PUBLIC = "qn3p5n7njksw47r3"
+BRAINTREE_PRIVATE = "d14ac944794c0df1c81991ecf49221ff"
+BRAINTREE_MERCHANT_ID = "n84nynknvzz3j3sz"
+BRAINTREE_ENVIRONEMNT = "Sandbox"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = (
     'grappelli',
-    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +51,9 @@ INSTALLED_APPS = [
     'loginsys',
     'cart',
     'report',
-]
+    'braintree',
+    'crispy_forms',
+)
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -118,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-GRAPPELLI_ADMIN_TITLE = 'Charity Shop'
+GRAPPELLI_ADMIN_TITLE = 'Raxmat KG'
 
 AUTOCOMPLETE_LIMIT = 5
 
@@ -127,7 +136,7 @@ AUTOCOMPLETE_LIMIT = 5
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Bishkek"
 
 USE_I18N = True
 

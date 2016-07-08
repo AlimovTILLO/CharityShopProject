@@ -1,15 +1,15 @@
+# -*- coding: utf-8 -*-
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 
 
 class Cart(models.Model):
-    creation_date = models.DateTimeField(verbose_name=_('creation date'))
-    checked_out = models.BooleanField(default=False, verbose_name=_('checked out'))
+    creation_date = models.DateTimeField(verbose_name="Дата создания")
+    checked_out = models.BooleanField(default=False, verbose_name="Проверено")
 
     class Meta:
-        verbose_name = _('cart')
-        verbose_name_plural = _('carts')
+        verbose_name = "Корзина"
+        verbose_name_plural = "Корзины"
         ordering = ('-creation_date',)
 
     def __unicode__(self):
@@ -26,18 +26,17 @@ class ItemManager(models.Manager):
 
 
 class Item(models.Model):
-    cart = models.ForeignKey(Cart, verbose_name=_('cart'))
-    quantity = models.PositiveIntegerField(verbose_name=_('quantity'))
-    unit_price = models.DecimalField(max_digits=18, decimal_places=2, verbose_name=_('unit price'))
-    # product as generic relation
+    cart = models.ForeignKey(Cart, verbose_name="Корзина")
+    quantity = models.PositiveIntegerField(verbose_name="Количество")
+    unit_price = models.DecimalField(max_digits=18, decimal_places=2, verbose_name="unit price")
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
 
     objects = ItemManager()
 
     class Meta:
-        verbose_name = _('item')
-        verbose_name_plural = _('items')
+        verbose_name = "Товар"
+        verbose_name_plural = "Товары"
         ordering = ('cart',)
 
     def __unicode__(self):

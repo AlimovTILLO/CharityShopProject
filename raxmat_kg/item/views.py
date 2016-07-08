@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.http.response import JsonResponse, Http404
@@ -47,6 +48,10 @@ def addcomment(request, item_id):
     return redirect('/items/get/%s/' % item_id)
 
 
+def funds(request):
+    return render_to_response('foundations.html', {'username': auth.get_user(request).username})
+
+
 def itemcategory(request):
     all_categories = ItemCategory.objects.all()
     return render_to_response('category.html',
@@ -74,3 +79,12 @@ def GetAjaxCategoryProduct(request):
         return JsonResponse({"category": dict(category)})
     else:
         raise Http404
+
+
+def commission(request):
+    item_commission = Item.objects.filter(item_active=True)
+    item_commission = Item.item_price * 0.15
+    commissioned_price = Item.item_price - item_commission
+    charity_value = commissioned_price * (Item.item_charity / Decimal(100.0))
+    return render_to_response(
+        {'item_commission': item_commission, 'commissioned_price': commissioned_price, 'charity_value': charity_value})

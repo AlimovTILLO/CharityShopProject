@@ -1,9 +1,13 @@
 # -*-coding: utf-8 -*-
-from django.shortcuts import render_to_response, redirect
+from django.core.urlresolvers import reverse
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import render_to_response, redirect, render
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.template import RequestContext
 from django.template.context_processors import csrf
+
+from loginsys.forms import UpdateProfile
 
 
 def login(request):
@@ -46,7 +50,7 @@ def register(request):
     return render_to_response('register.html', args)
 
 
-def settings(request, templates='settings.html'):
+def settings(request):
     """
     Processes requests for the settings page, where users
     can edit their profiles.
@@ -60,4 +64,20 @@ def settings(request, templates='settings.html'):
     else:
         form = UserChangeForm(instance=request.user)
     title = 'Settings'
-    return render_to_response(templates, locals(), context_instance=RequestContext(request))
+    return render_to_response('settings.html', locals(), context_instance=RequestContext(request))
+
+
+def update_profile(request):
+    args = {}
+
+    if request.method == 'POST':
+        form = UpdateProfile(request.POST)
+        form.actual_user = request.user
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('update_profile_success'))
+    else:
+        form = UpdateProfile()
+
+    args['form'] = form
+    return render(request, 'registration/update_profile.html', args)

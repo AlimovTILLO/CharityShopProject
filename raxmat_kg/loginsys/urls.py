@@ -6,7 +6,5 @@ urlpatterns = [
     url(r'^login', login),
     url(r'^logout', logout),
     url(r'^register', register),
-    url(r'^settings/$', settings, {
-        'templates': 'settings.html'
-    }, 'settings'),
+    url(r'^settings/$', settings),
 ]

@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+{% block item %}
+
+    <div class="row">
+        <div class="col-lg-10">
+            {% if object_list|length <= 0 %}
+
+                <div class='col-sm-6 col-sm-offset-3 text-center'>
+
+
+                </div>
+
+            {% else %}
+
+                <div class='col-sm-6 col-sm-offset-3'>
+                    <h1>Покупки</h1>
+
+
+                    <table class='table'>
+                        {% for object in object_list %}
+
+                            <tr>
+
+                                <td>
+                                    <a href='{{ object.get_absolute_url }}'>View #{% if object.order_id %}
+                                        {{ object.order_id }}{% else %}{{ object.id }}{% endif %}</a>
+
+                                </td>
+                                <td>
+                                    Item Count: {{ object.cart.items.count }}
+                                </td>
+
+
+                            </tr>
+
+                        {% endfor %}
+
+                    </table>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-lg-2">
+            <button id='runDemoButton' value='buy' type="button" class="btn btn-success"
+                    onclick='DemoButton("{{ jwt }}","{{ key }}");'>Оплатить
+            </button>
+        </div>
+    </div>
+
+{% endblock %}

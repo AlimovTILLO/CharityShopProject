@@ -1,10 +1,10 @@
 # coding=utf-8
 import time
 
+from django.contrib import auth
 from django.shortcuts import render_to_response
 
-from cart import cart
-from cart.models import Cart, Item
+from cart.models import Cart
 
 import jwt
 from sellerinfo import SELLER_ID
@@ -15,7 +15,7 @@ app = Cart(__name__)
 
 def index(request):
     product_info = [
-        {'name': 'blablabla',  # ==>
+        {'name': 'Samsung',  # ==>
          'price': 25  # ==>
          }]
 
@@ -39,4 +39,5 @@ def index(request):
         'request': request_info
     }
     token = jwt.encode(jwt_info, SELLER_SECRET)
-    return render_to_response('mobilnik.html', {'jwt': token, 'key': SELLER_ID})
+    return render_to_response('order_list.html',
+                              {'jwt': token, 'key': SELLER_ID, 'username': auth.get_user(request).username})

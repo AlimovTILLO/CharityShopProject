@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
-from foundation import views
+from item.views import funds
 
 urlpatterns = [
-    url(r'^funds/$', "foundation.views.funds"),
+    url(r'^funds/$', funds, name="funds"),
 ]

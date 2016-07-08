@@ -1,9 +1,9 @@
 from django.contrib import auth
 from django.http import JsonResponse
-
-from .cart import Cart
 from django.shortcuts import render
+
 from item.models import Item
+from .cart import Cart
 
 
 def add_to_cart(request, item_id, quantity):
@@ -26,9 +26,12 @@ def remove_all(request):
 
 
 def show(request):
+
     context = {
         'cart': Cart(request),
-        'username': auth.get_user(request).username
+        'username': auth.get_user(request).username,
+
     }
     print(dict(cart=Cart(request)))
+
     return render(request, 'cart.html', context)

@@ -1,10 +1,12 @@
 from django.contrib import admin
 
-from purchase.models import Purchase
+from .models import UserCheckout, Order
+
+admin.site.register(UserCheckout)
+
+# admin.site.register(UserAddress)
+
+admin.site.register(Order)
 
 
-class PurchaseAdmin(admin.ModelAdmin):
-    fields = ['user', 'item', 'sales_date', 'pin']
 
-
-admin.site.register(Purchase, PurchaseAdmin)
